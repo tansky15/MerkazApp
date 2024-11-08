@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MerkazApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71462c0da7df49cc559e15f6611ca591366f8085")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2054b3c216f668770ea1e0b3e7d1bd0820187ba9")]
 [assembly: System.Reflection.AssemblyProductAttribute("MerkazApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MerkazApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

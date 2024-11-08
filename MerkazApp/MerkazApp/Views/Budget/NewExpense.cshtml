@@ -1,0 +1,77 @@
+﻿@model MerkazApp.ViewModels.DepenseVM
+
+
+        <!-- En-tête de page -->
+        <div class="row align-items-center mb-7">
+            <div class="col-auto">
+                <!-- Avatar -->
+                <div class="avatar avatar-xl rounded text-primary">
+                    <i class="fs-2" data-duoicon="dollar-sign"></i>
+                </div>
+            </div>
+            <div class="col">
+                <!-- Fil d'Ariane -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2">
+                        <li class="breadcrumb-item"><a class="text-body-secondary" href="#">Budget</a></li>
+                        <li class="breadcrumb-item"><a class="text-body-secondary" href="#">Dépenses</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Nouvelle dépense</li>
+                    </ol>
+                </nav>
+
+                <!-- Titre -->
+                <h1 class="fs-4 mb-0">Nouvelle dépense</h1>
+            </div>
+           
+        </div>
+
+        <!-- Contenu de la page -->
+        <div class="row">
+            <div class="col">
+                <!-- Formulaire -->
+                <form asp-action="NewExpense" method="post">
+                    
+                    <div class="form-group mb-5">
+                        <label asp-for="Titre" class="control-label"></label>
+                        <input asp-for="Titre" class="form-control" />
+                        <span asp-validation-for="Titre" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-5">
+                        <label asp-for="Type" class="control-label"></label>
+                        <select asp-for="Type" id="Type" class="form-control">
+                            <option value="mercedes">type 1</option>
+                            <option value="audi">type 2</option>
+                        </select>
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="form-group mb-5">
+                        <label asp-for="DateCreation" class="control-label"></label>
+                        <input asp-for="DateCreation" class="form-control" type="date" />
+                        <span asp-validation-for="DateCreation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-5">
+                        <label asp-for="Montant" class="control-label"></label>
+                        <input asp-for="Montant" class="form-control" />
+                        <span asp-validation-for="Montant" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-5">
+                        <label asp-for="Frequence" class="control-label"></label>
+                        <select asp-for="Type" id="Type" class="form-control">
+                            <option value="mercedes">Hebdomadaire</option>
+                            <option value="audi">Mensuel</option>
+                        </select>
+                        <span asp-validation-for="Frequence" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-secondary w-100">
+                        Enregistrer
+                    </button>
+                    <button type="reset" class="btn btn-link w-100 mt-3">
+                        Réinitialiser le formulaire
+                    </button>
+                </form>
+            </div>
+        </div>
+

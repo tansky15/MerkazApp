@@ -1,0 +1,222 @@
+﻿@model IEnumerable<MerkazApp.ViewModels.DepenseVM>
+
+@{
+    ViewData["Title"] = "Expenses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main class="main px-lg-6">
+    <!-- Content -->
+    <div class="container-lg">
+        <!-- Page header -->
+        <div class="row align-items-center mb-7">
+            <div class="col-auto">
+                <!-- Avatar -->
+                <div class="avatar avatar-xl rounded text-primary">
+                    <i class="fs-2" data-duoicon="credit-card"></i>
+                </div>
+            </div>
+            <div class="col">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2">
+                        <li class="breadcrumb-item"><a class="text-body-secondary" href="#">Budget</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Liste des dépenses</li>
+                    </ol>
+                </nav>
+
+                <!-- Heading -->
+                <h1 class="fs-4 mb-0">Gestion des dépenses</h1>
+            </div>
+            <div class="col-12 col-sm-auto mt-4 mt-sm-0">
+                <!-- Action -->
+                <a class="btn btn-secondary d-block" href="#" data-bs-toggle="modal" data-bs-target="#newExpenseModal">
+                    <span class="material-symbols-outlined me-1">add</span> Ajouter une dépense
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Page content -->
+        <div class="row">
+            <div class="col-12">
+                <!-- Filters -->
+                <div class="card card-line bg-body-tertiary border-transparent mb-7">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg">
+                                <div class="row gx-3">
+                                    <div class="col col-lg-auto ms-auto">
+                                        <div class="input-group bg-body">
+                                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search" />
+                                            <span class="input-group-text" id="search">
+                                                <span class="material-symbols-outlined">search</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="dropdown">
+                                            <button class="btn btn-dark px-3" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                                <span class="material-symbols-outlined">filter_list</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="table-responsive mb-7">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <label class="form-check-label" for="tableCheckAll">Check</label>
+                                    </div>
+                                </th>
+                                <th>@Html.DisplayNameFor(model => model.Type)</th>
+                                <th>@Html.DisplayNameFor(model => model.Titre)</th>
+                                <th>@Html.DisplayNameFor(model => model.Montant)</th>
+                                <th>@Html.DisplayNameFor(model => model.Frequence)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cat in ViewBag.CategoriesDepense)
+                            {
+                                <tr>
+                                    <td colspan="2"><b>@cat.Titre</b></td>
+                                    <td colspan="2">Maximum(35% toutes les dépense)</td>
+                                    <td colspan="2">Pourcentage Actuel(35%)</td>
+                                </tr>
+
+
+
+                                int i = 0;
+                                var modCategorie = Model.Where(r => r.Categorie == cat.Titre);
+                                int count = modCategorie.Count();
+
+                                @foreach (var item in modCategorie)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="checkItem_@item.DepenseID" />
+                                                <label class="form-check-label" for="checkItem_@item.DepenseID"></label>
+                                            </div>
+                                        </td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Titre)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Montant)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Frequence)</td>
+                                        <td>
+
+                                            <a class="btn btn-warning ml-2" href="@Url.Action("EditExpense","Budget",new { id = item.DepenseID })">
+                                                <span class="material-symbols-outlined">
+                                                    <span class="material-symbols-outlined">
+                                                        edit
+                                                    </span>
+                                                </span>
+                                            </a>
+                                            <a class="btn btn-danger ml-2" href="@Url.Action("DeleteExpense","Budget",new { id = item.DepenseID })">
+                                                <span class="material-symbols-outlined">
+                                                    close
+                                                </span>
+                                            </a>
+
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                                if (count == i)
+                                {
+                                    <tr>
+                                        <td>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><b>@ConvertToDollar(modCategorie.Sum(r => r.Montant))</b></td>
+                                        <td colspan="2">
+                                            <span class="material-symbols-outlined">
+                                                warning
+                                            </span>
+                                            Vous avez depasser votre seuil na na ni
+                                        </td>
+
+                                    </tr>
+                                }
+
+
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        @functions {
+            public string ConvertToDollar(double montant)
+            {
+                // Formater le montant en dollars avec deux décimales
+                return $"${montant:0.00}";
+            }
+        }
+
+        <div class="row align-items-center">
+            @*
+            <div class="col">
+            <!-- Text -->
+            <p class="text-body-secondary mb-0">1 – 10 (2550 total)</p>
+            </div>
+            <div class="col-auto">
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+            <ul class="pagination mb-0">
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+            </li>
+            <li class="page-item">
+            <a class="page-link active" href="#">1</a>
+            </li>
+            <li class="page-item">
+            <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+            <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+            </li>
+            </ul>
+            </nav>
+            </div>
+            *@
+        </div>
+    </div>
+</main>
+
+<!-- Modal Structure -->
+<div class="modal fade" id="newExpenseModal" tabindex="-1" aria-labelledby="newExpenseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newExpenseModalLabel">Nouvelle Dépense</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("NewExpense", new MerkazApp.ViewModels.DepenseVM())
+            </div>
+        </div>
+    </div>
+</div>
