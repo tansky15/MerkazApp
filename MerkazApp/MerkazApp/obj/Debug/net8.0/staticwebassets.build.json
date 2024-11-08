@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jIRhIsk3vnkV6n/j1tZOLJtF48F2nvQ5SMKnX7eHG2k=",
+  "Hash": "MRFCEqo4nWk6Ezv3jikj/ye0y3srfI6SJrbsTAyDtkU=",
   "Source": "MerkazApp",
   "BasePath": "_content/MerkazApp",
   "Mode": "Default",
@@ -395,6 +395,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\projects\\project-3.png"
+    },
+    {
+      "Identity": "C:\\Projects\\Webproject\\MerkazApp\\MerkazApp\\MerkazApp\\wwwroot\\assets\\js\\SystemMode.js",
+      "SourceId": "MerkazApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\Webproject\\MerkazApp\\MerkazApp\\MerkazApp\\wwwroot\\",
+      "BasePath": "_content/MerkazApp",
+      "RelativePath": "assets/js/SystemMode.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\SystemMode.js"
     },
     {
       "Identity": "C:\\Projects\\Webproject\\MerkazApp\\MerkazApp\\MerkazApp\\wwwroot\\assets\\js\\theme.bundle.js",

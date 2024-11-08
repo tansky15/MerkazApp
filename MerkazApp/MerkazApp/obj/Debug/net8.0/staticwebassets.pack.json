@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\assets\\img\\projects\\project-3.png"
     },
     {
+      "Id": "C:\\Projects\\Webproject\\MerkazApp\\MerkazApp\\MerkazApp\\wwwroot\\assets\\js\\SystemMode.js",
+      "PackagePath": "staticwebassets\\assets\\js\\SystemMode.js"
+    },
+    {
       "Id": "C:\\Projects\\Webproject\\MerkazApp\\MerkazApp\\MerkazApp\\wwwroot\\assets\\js\\theme.bundle.js",
       "PackagePath": "staticwebassets\\assets\\js\\theme.bundle.js"
     },

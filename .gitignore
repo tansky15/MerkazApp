@@ -1,4 +1,6 @@
 ./vs
-/.vs
+.vs/
 /MerkazApp/.vs/MerkazApp/FileContentIndex
 /MerkazApp/.vs/MerkazApp
+./bin
+./MerkazApp/.vs/
